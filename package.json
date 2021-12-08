@@ -1,0 +1,25 @@
+{
+  "name": "ecom-server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ecom-server/server.js",
+    "server": "nodemon ecom-server/server.js",
+    "client": "npm start --prefix ecom-client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node ecom-server/seederScript.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.14"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15"
+  }
+}
