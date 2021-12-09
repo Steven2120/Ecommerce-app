@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navigation/Navbar";
+import Backdrop from "./components/Backdrop/Backdrop";
 import "./App.css";
 
 import CartInfoScreen from "./screens/CartInfoScreen";
@@ -10,6 +11,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Backdrop />
       <main>
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />
