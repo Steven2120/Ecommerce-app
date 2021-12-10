@@ -9,6 +9,7 @@ import SideBar from "./components/SideBar/SideBar";
 import CartInfoScreen from "./screens/CartInfoScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetailScreen from "./screens/ProductDetailScreen";
+import { set } from "mongoose";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -16,7 +17,7 @@ function App() {
   return (
     <Router>
       <Navbar click={() => setSideToggle(true)} />
-      <SideBar show={sideToggle} />
+      <SideBar show={sideToggle} click={() => setSideToggle(false)} />
       <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
       <main>
         <Routes>
