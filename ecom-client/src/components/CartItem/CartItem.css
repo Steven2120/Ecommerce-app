@@ -1,0 +1,68 @@
+.item {
+    width: 100%;
+    padding: 1.1rem;
+    margin-bottom: 9px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    gap: 9px;
+    background: #fff;
+    border-radius: 3px;
+    place-items: center;
+}
+
+.item__name {
+    text-decoration: none;
+    color: #171717;
+}
+
+.item__name:hover {
+    color: #dd218e;
+}
+
+.item__select {
+    padding: 11px 16px;
+}
+
+.delete__item__button {
+    padding: 11px 18px;
+    color: red;
+    background: #f4f4f4;
+    border: 1px solid #171717;
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+.delete__item__button:hover,
+.delete__item__button:focus,
+.delete__item__button:active {
+    background: #171717;
+    transform: scale(1.2);
+}
+
+@media (max-width: 650px) {
+    .item__name {
+        font-size: .9rem;
+    }
+
+    .item__select, .delete__item__button {
+        padding: 9px 14px;
+    }
+
+    .item__price {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .item__name {
+        font-size: .7rem;
+    }
+
+    .item__select, .delete__item__button {
+        padding: 6px 8px;
+    }
+
+    .item__price {
+        font-size: .6rem;
+    }
+}

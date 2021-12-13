@@ -17,6 +17,16 @@ const CartItem = () => {
       </Link>
 
       <p className="item__price">$499.99</p>
+      <select className="item__select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <button className="delete__item__button">
+        <i className="fas fa-trash"></i>
+      </button>
     </div>
   );
 };
