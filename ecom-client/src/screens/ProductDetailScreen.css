@@ -74,6 +74,7 @@
 .info__right select {
     padding: .4rem .6rem;
     border: .5px solid #89ABE3FF;
+    cursor: pointer;
 }
 
 @media (max-width: 960px) {

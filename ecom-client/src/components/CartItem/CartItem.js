@@ -6,10 +6,12 @@ const CartItem = () => {
   return (
     <div className="item">
       <div className="item__image">
-        <img
-          src="https://ecom-app-product-images.s3.amazonaws.com/shiba_pillow.jpg"
-          alt="shibainu pillow"
-        />
+        <Link to={`/product/${1111}`}>
+          <img
+            src="https://ecom-app-product-images.s3.amazonaws.com/shiba_pillow.jpg"
+            alt="shibainu pillow"
+          />
+        </Link>
       </div>
 
       <Link to={`/product/${1111}`} className="item__name">

@@ -5,7 +5,9 @@ const Navbar = ({ click }) => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <h2>Ecom Shopping Cart</h2>
+        <Link to="/" className="home__header">
+          <h2>Ecom Shopping Cart</h2>
+        </Link>
       </div>
       <ul className="navbar__links">
         <li>

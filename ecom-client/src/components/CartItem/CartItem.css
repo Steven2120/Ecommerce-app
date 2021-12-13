@@ -5,22 +5,26 @@
     display: grid;
     grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
     gap: 9px;
-    background: #fff;
+    background: white;
     border-radius: 3px;
     place-items: center;
+    box-shadow: 0 3px 6px #89ABE3FF;
 }
 
 .item__name {
     text-decoration: none;
-    color: #171717;
+    color: rgb(122, 158, 214);
+    font-size: 1.2rem;
 }
 
 .item__name:hover {
     color: #dd218e;
+    
 }
 
 .item__select {
     padding: 11px 16px;
+    cursor: pointer;
 }
 
 .delete__item__button {
@@ -35,7 +39,7 @@
 .delete__item__button:hover,
 .delete__item__button:focus,
 .delete__item__button:active {
-    background: #171717;
+    background: #89ABE3FF;
     transform: scale(1.2);
 }
 
