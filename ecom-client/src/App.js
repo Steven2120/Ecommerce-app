@@ -9,7 +9,6 @@ import SideBar from "./components/SideBar/SideBar";
 import CartInfoScreen from "./screens/CartInfoScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetailScreen from "./screens/ProductDetailScreen";
-import { set } from "mongoose";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);

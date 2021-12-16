@@ -38,7 +38,7 @@ export const productDetailReducer = (state = { product: {} }, action) => {
         loading: false,
         error: action.payload,
       };
-    case actionTypes.GET_RESET_DETAILS:
+    case actionTypes.RESET_DETAILS:
       return {
         product: {},
       };

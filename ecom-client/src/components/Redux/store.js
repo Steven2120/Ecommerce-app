@@ -9,7 +9,7 @@ import {
 
 const reducer = combineReducers({
   cart: cartReducer,
-  products: productsReducer,
+  getProducts: productsReducer,
   productDetail: productDetailReducer,
 });
 
