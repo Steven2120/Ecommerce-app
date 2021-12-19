@@ -18,6 +18,10 @@
     margin-bottom: 8px;
 }
 
+.product__details > a {
+    text-decoration: none;
+}
+
 .details__price {
     font-weight: bold;
 }

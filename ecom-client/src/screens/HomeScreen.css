@@ -5,12 +5,14 @@
 
 .homescreen__title {
     font-size: 1.5rem;
-    color:  #171717;
+    color:rgb(84, 141, 233);
     margin-bottom: 1rem;
     margin-left: 8px;
+    text-align: center;
 }
 
 .homescreen__products {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
 }
