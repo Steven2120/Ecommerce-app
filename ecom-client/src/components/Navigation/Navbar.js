@@ -11,7 +11,7 @@ const Navbar = ({ click }) => {
       </div>
       <ul className="navbar__links">
         <li>
-          <Link to="/cart">
+          <Link className="cart__link" to="/cart">
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
@@ -20,7 +20,9 @@ const Navbar = ({ click }) => {
           </Link>
         </li>
         <li>
-          <Link to="/">Return to Shop</Link>
+          <Link className="return__link" to="/">
+            <span>Return to Shop</span>
+          </Link>
         </li>
       </ul>
 
