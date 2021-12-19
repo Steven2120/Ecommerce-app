@@ -1,22 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Product.css";
 
-const Product = () => {
+const Product = ({ imageUrl, name, price, description, productId }) => {
   return (
     <div className="product">
-      <img
-        src="https://ecom-app-product-images.s3.amazonaws.com/shiba_pillow.jpg"
-        alt="shibainu pillow"
-      />
-      <div className="product__details">
-        <p className="details__name"></p>
-        <p className="details__description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-          amet eligendi deserunt nulla obcaecati voluptate.
-        </p>
+      <img src={imageUrl} alt={name} />
 
-        <p className="details__price">$300.99</p>
-        <Link to={`/product/${1111}`} className="details__button">
+      <div className="product__details">
+        <Link to={`/product/${productId}`}>
+          <p className="details__name">{name.substring(0, 41)}...</p>
+        </Link>
+        <p className="details__description">
+          {description.substring(0, 101)}...
+        </p>
+        <p className="details__price">${price}</p>
+
+        <Link to={`/product/${productId}`} className="details__button">
           View
         </Link>
       </div>
