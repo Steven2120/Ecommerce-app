@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./SideBar.css";
 
@@ -8,6 +9,13 @@ const SideBar = ({ show, click }) => {
     sideBarClass.push("show");
   }
 
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => qty + Number(item.qty), 0);
+  };
+
   return (
     <div className={sideBarClass.join(" ")}>
       <ul className="sidebar__links" onClick={click}>
@@ -17,7 +25,7 @@ const SideBar = ({ show, click }) => {
               <i className="fas fa-shopping-cart"></i>
               <span>
                 Cart
-                <span className="sidebar__cartbadge">(0)</span>
+                <span className="sidebar__cartbadge">({getCartCount()})</span>
               </span>
             </span>
           </Link>

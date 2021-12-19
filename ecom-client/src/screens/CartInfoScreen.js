@@ -1,13 +1,34 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem/CartItem";
+import {
+  addToCart,
+  removeFromCart,
+} from "../components/Redux/actions/cartActions";
 import "./CartInfoScreen.css";
 
-const CartInfoScreen = () => {
+const CartScreen = () => {
   const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cart);
+
   const { cartItems } = cart;
+
+  const qtyChangeHandler = (id, qty) => {
+    dispatch(addToCart(id, qty));
+  };
+
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+  const getCartSubTotal = () => {
+    return cartItems.reduce((price, item) => item.price * item.qty + price, 0);
+  };
 
   return (
     <div className="cart__info__screen">
@@ -15,16 +36,23 @@ const CartInfoScreen = () => {
         <h2>Your Cart</h2>
         {cartItems.length === 0 ? (
           <div className="empty__message">
-            Your cart is empty <Link to="/">Continue To Shop</Link>
+            Your cart is empty <Link to="/">Return to Shop</Link>
           </div>
         ) : (
-          cartItems.map((i) => <CartItem />)
+          cartItems.map((item) => (
+            <CartItem
+              key={item.product}
+              item={item}
+              qtyChangeHandler={qtyChangeHandler}
+              removeHandler={removeHandler}
+            />
+          ))
         )}
       </div>
       <div className="cart__info__right">
-        <div className="info">
-          <p>Subtotal (0) items</p>
-          <p>$499.99</p>
+        <div>
+          <p>Subtotal ({getCartCount()}) items</p>
+          <p>${getCartSubTotal().toFixed(2)}</p>
         </div>
         <div>
           <button>Proceed To Checkout</button>
@@ -34,4 +62,4 @@ const CartInfoScreen = () => {
   );
 };
 
-export default CartInfoScreen;
+export default CartScreen;

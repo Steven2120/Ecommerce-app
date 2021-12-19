@@ -12,7 +12,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(displayProducts());
-  }, [displayProducts]);
+  }, [dispatch]);
 
   return (
     <div className="homescreen">

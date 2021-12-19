@@ -19,7 +19,7 @@ const ProductScreen = () => {
     if (product && id !== product._id) {
       dispatch(getProductDetails(id));
     }
-  }, [dispatch, product]);
+  }, [dispatch, id, product]);
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));

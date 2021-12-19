@@ -1,32 +1,36 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./CartItem.css";
 
-const CartItem = () => {
+const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
   return (
     <div className="item">
       <div className="item__image">
-        <Link to={`/product/${1111}`}>
-          <img
-            src="https://ecom-app-product-images.s3.amazonaws.com/shiba_pillow.jpg"
-            alt="shibainu pillow"
-          />
+        <Link to={`/product/${item.product}`} className="item__name">
+          <img src={item.imageUrl} alt={item.name} />
         </Link>
       </div>
 
-      <Link to={`/product/${1111}`} className="item__name">
-        <p>Product 1</p>
+      <Link to={`/product/${item.product}`} className="item__name">
+        <p>{item.name}</p>
       </Link>
+      <p className="item__price">${item.price}</p>
 
-      <p className="item__price">$499.99</p>
-      <select className="item__select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <select
+        className="item__select"
+        value={item.qty}
+        onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
+      >
+        {[...Array(item.countInStock).keys()].map((x) => (
+          <option key={x + 1} value={x + 1}>
+            {x + 1}
+          </option>
+        ))}
       </select>
 
-      <button className="delete__item__button">
+      <button
+        className="delete__item__button"
+        onClick={() => removeHandler(item.product)}
+      >
         <i className="fas fa-trash"></i>
       </button>
     </div>
