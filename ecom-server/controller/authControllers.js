@@ -1,5 +1,6 @@
 const User = require("../model/User");
 const ErrorResponse = require("../utils/errorResponse");
+const emailSender = require("../utils/emailSender");
 
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -61,10 +62,33 @@ exports.forgotPassword = async (req, res, next) => {
     const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
 
     const resetMessage = `
-    <h1>Below is the link to reset your password as requested</h1>
+    <h2>Password Reset Request</h2>
+    <p>Below is the link to reset your password as requested.</p>
     <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
     `;
-  } catch (error) {}
+
+    try {
+      await emailSender({
+        to: user.email,
+        subject: "Request to reset password",
+        text: resetMessage,
+      });
+
+      res.status(200).json({
+        success: true,
+        data: "Email has been sent",
+      });
+    } catch (error) {
+      user.resetPassWordToken = undefined;
+      user.resetPasswordExpiration = undefined;
+
+      await user.save();
+
+      return next(new ErrorResponse("Email could not be sent", 500));
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 exports.resetpassword = (req, res, next) => {
