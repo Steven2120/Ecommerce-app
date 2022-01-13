@@ -9,6 +9,10 @@ import SideBar from "./components/SideBar/SideBar";
 import CartInfoScreen from "./screens/CartInfoScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetailScreen from "./screens/ProductDetailScreen";
+import LogInScreen from "./screens/LogInScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ForgotpasswordScreen from "./screens/ForgotpasswordScreen";
+import ResetPasswordScreen from "./screens/ResetPasswordScreen";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -21,6 +25,18 @@ function App() {
       <main>
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />
+          <Route exact path="/register" element={<RegisterScreen />} />
+          <Route exact path="/login" element={<LogInScreen />} />
+          <Route
+            exact
+            path="/forgotpassword"
+            element={<ForgotpasswordScreen />}
+          />
+          <Route
+            exact
+            path="/resetpassword/:resetToken"
+            element={<ResetPasswordScreen />}
+          />
           <Route exact path="/product/:id" element={<ProductDetailScreen />} />
           <Route exact path="/cart" element={<CartInfoScreen />} />
         </Routes>
