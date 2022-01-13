@@ -57,6 +57,7 @@ exports.forgotPassword = async (req, res, next) => {
     }
 
     const resetToken = user.getResetPasswordToken();
+    const tokenExp = user.resetPasswordExpiration;
 
     await user.save();
 
@@ -64,7 +65,7 @@ exports.forgotPassword = async (req, res, next) => {
 
     const resetMessage = `
     <h2>Password Reset Request</h2>
-    <p>Below is the link to reset your password as requested.</p>
+    <p>Below is the link to reset your password as requested. The following link will only be valid until ${tokenExp}</p>
     <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
     `;
 
@@ -98,29 +99,29 @@ exports.resetpassword = async (req, res, next) => {
     .update(req.params.resetToken)
     .digest("hex");
 
-    try {
-      const user = await User.findOne({
-        resetPasswordToken = resetPasswordToken,
-        resetPasswordExpiration = {$gt: Date.now()}
-      })
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: resetPasswordToken,
+      resetPasswordExpiration: { $gt: Date.now() },
+    });
 
-      if (!user) {
-        return next(new ErrorResponse("Reset token not valid", 400));
-      }
-
-      user.password = req.body.password;
-      user.resetPassWordToken = undefined;
-      user.resetPasswordExpiration = undefined;
-
-      user.save();
-
-      res.status(201).json({
-        success: true,
-        data: "Password has been reset successfully"
-      })
-    } catch (error) {
-      next(error);
+    if (!user) {
+      return next(new ErrorResponse("Reset token not valid", 400));
     }
+
+    user.password = req.body.password;
+    user.resetPassWordToken = undefined;
+    user.resetPasswordExpiration = undefined;
+
+    user.save();
+
+    res.status(201).json({
+      success: true,
+      data: "Password has been reset successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const sendToken = (user, statusCode, res) => {
