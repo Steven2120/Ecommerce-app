@@ -1,6 +1,6 @@
 import { useNavigate, Route } from "react-router-dom";
 
-function PrivateRoutes({ component: element, ...args }) {
+const PrivateRoutes = ({ component: element, ...args }) => {
   const navigate = useNavigate();
   return (
     <Route
@@ -14,6 +14,6 @@ function PrivateRoutes({ component: element, ...args }) {
       }
     />
   );
-}
+};
 
 export default PrivateRoutes;
