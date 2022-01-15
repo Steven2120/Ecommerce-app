@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./components/Navigation/Navbar";
 import Backdrop from "./components/Backdrop/Backdrop";
 import SideBar from "./components/SideBar/SideBar";
+import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 
 import CartInfoScreen from "./screens/CartInfoScreen";
 import HomeScreen from "./screens/HomeScreen";
@@ -13,6 +14,7 @@ import LogInScreen from "./screens/LogInScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ForgotpasswordScreen from "./screens/ForgotpasswordScreen";
 import ResetPasswordScreen from "./screens/ResetPasswordScreen";
+import PrivateScreen from "./screens/PrivateScreen";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -24,6 +26,7 @@ function App() {
       <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
       <main>
         <Routes>
+          <PrivateRoutes exact path="/" element={PrivateScreen} />
           <Route exact path="/" element={<HomeScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
           <Route exact path="/login" element={<LogInScreen />} />
