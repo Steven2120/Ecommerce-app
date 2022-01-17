@@ -1,9 +1,9 @@
-import { useNavigate, Route } from "react-router-dom";
+import { useNavigate, Routes } from "react-router-dom";
 
 const PrivateRoutes = ({ component: element, ...args }) => {
   const navigate = useNavigate();
   return (
-    <Route
+    <Routes
       {...args}
       render={(props) =>
         localStorage.getItem("authToken") ? (

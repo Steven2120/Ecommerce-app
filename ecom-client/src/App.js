@@ -21,12 +21,12 @@ function App() {
 
   return (
     <Router>
+      <PrivateRoutes exact path="/" element={PrivateScreen} />
       <Navbar click={() => setSideToggle(true)} />
       <SideBar show={sideToggle} click={() => setSideToggle(false)} />
       <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
       <main>
         <Routes>
-          <PrivateRoutes exact path="/" element={PrivateScreen} />
           <Route exact path="/" element={<HomeScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
           <Route exact path="/login" element={<LogInScreen />} />

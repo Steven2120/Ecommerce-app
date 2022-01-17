@@ -1,17 +1,58 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./RegisterScreen.css";
 
 const RegisterScreen = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const registerHandler = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      header: {
+        "Content-type": "application/json",
+      },
+    };
+
+    if (password !== confirmPassword) {
+      setPassword("");
+      setConfirmPassword("");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+      return setError("Passwords do not match");
+    }
+
+    try {
+      const { data } = await axios.post(
+        "/api/auth/register",
+        { username, email, password },
+        config
+      );
+
+      localStorage.setItem("authToken", data.token);
+
+      navigate("/");
+    } catch (error) {
+      setError(error.response.data.error);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
+  };
 
   return (
     <div className="register-container">
-      <form className="register_form">
-        <h3 className="register_title">Register</h3>
-        <div className="form_group">
+      <form className="register__form" onSubmit={registerHandler}>
+        <h3 className="register__title">Register</h3>
+        {error && <span className="error__message">{error}</span>}
+        <div className="form__group">
           <label htmlFor="name">Username:</label>
           <input
             type="text"
@@ -23,7 +64,7 @@ const RegisterScreen = () => {
           />
         </div>
 
-        <div className="form_group">
+        <div className="form__group">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -35,7 +76,7 @@ const RegisterScreen = () => {
           />
         </div>
 
-        <div className="form_group">
+        <div className="form__group">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -47,7 +88,7 @@ const RegisterScreen = () => {
           />
         </div>
 
-        <div className="form_group">
+        <div className="form__group">
           <label htmlFor="confirmpassword">Confirm Password:</label>
           <input
             type="password"
