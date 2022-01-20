@@ -27,7 +27,7 @@ function App() {
       <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
       <main>
         <Routes>
-          <Route exact path="/" element={<HomeScreen />} />
+          {/* <Route exact path="/" element={<HomeScreen />} /> */}
           <Route exact path="/register" element={<RegisterScreen />} />
           <Route exact path="/login" element={<LogInScreen />} />
           <Route
