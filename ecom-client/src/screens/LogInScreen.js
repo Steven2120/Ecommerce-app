@@ -9,12 +9,6 @@ const LogInScreen = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem("authToken")) {
-      navigate("/");
-    }
-  }, [navigate]);
-
   const loginHandler = async (e) => {
     e.preventDefault();
 

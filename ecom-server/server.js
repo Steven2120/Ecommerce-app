@@ -4,14 +4,14 @@ const app = express();
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/errorHandler");
 const productRoutes = require("./routes/productRoutes");
-const privateRoutes = require("./routes/privateRoutes");
+const privateRoute = require("./routes/privateRoute");
 
 connectDB();
 
 app.use(express.json());
 app.use("/api/products", productRoutes);
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/private", privateRoutes);
+app.use("/api/private", privateRoute);
 
 app.use(errorHandler);
 

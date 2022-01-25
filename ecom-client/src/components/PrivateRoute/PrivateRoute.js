@@ -1,13 +1,13 @@
 import { useNavigate, Routes } from "react-router-dom";
 
-const PrivateRoutes = ({ component: element, ...args }) => {
+const PrivateRoute = ({ component: Component, ...args }) => {
   const navigate = useNavigate();
   return (
     <Routes
       {...args}
       render={(props) =>
         localStorage.getItem("authToken") ? (
-          <element {...props} />
+          <Component {...props} />
         ) : (
           navigate("/login")
         )
@@ -16,4 +16,4 @@ const PrivateRoutes = ({ component: element, ...args }) => {
   );
 };
 
-export default PrivateRoutes;
+export default PrivateRoute;
