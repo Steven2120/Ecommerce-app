@@ -77,6 +77,14 @@
     font-size: 1.3rem;
 }
 
+.logged__out:hover {
+    color: #ff13b0;
+}
+
+.logged__in:hover {
+    color: #ff13b0;
+}
+
 .hamburger__menu {
     width: 30px;
     height: 30px;

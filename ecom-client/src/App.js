@@ -19,7 +19,6 @@ import LogInScreen from "./screens/LogInScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ForgotpasswordScreen from "./screens/ForgotpasswordScreen";
 import ResetPasswordScreen from "./screens/ResetPasswordScreen";
-import PrivateScreen from "./screens/PrivateScreen";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -29,32 +28,47 @@ function App() {
       <Navbar click={() => setSideToggle(true)} />
       <SideBar show={sideToggle} click={() => setSideToggle(false)} />
       <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
-      <PrivateRoute exact path="/" element={<PrivateScreen />} />
       <Routes>
         <Route
-          exact
           path="/login"
           element={<LogInScreen />}
           render={() => <Navigate to="/" />}
         />
-        <Route exact path="/register" element={<RegisterScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/forgotpassword" element={<ForgotpasswordScreen />} />
         <Route
-          exact
-          path="/forgotpassword"
-          element={<ForgotpasswordScreen />}
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomeScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/resetpassword/:resetToken"
+          element={
+            <PrivateRoute>
+              <ResetPasswordScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/product/:id"
+          element={
+            <PrivateRoute>
+              <ProductDetailScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <CartInfoScreen />
+            </PrivateRoute>
+          }
         />
       </Routes>
-      {/* <PrivateRoute
-          exact
-          path="/resetpassword/:resetToken"
-          element={<ResetPasswordScreen />}
-        />
-        <PrivateRoute
-          exact
-          path="/product/:id"
-          element={<ProductDetailScreen />}
-        />
-        <PrivateRoute exact path="/cart" element={<CartInfoScreen />} /> */}
     </Router>
   );
 }

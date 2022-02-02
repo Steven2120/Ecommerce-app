@@ -1,13 +1,19 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import "./Navbar.css";
 
 const Navbar = ({ click }) => {
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
   const getCartCount = () => {
     return cartItems.reduce((qty, item) => qty + Number(item.qty), 0);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
   };
 
   return (
@@ -32,6 +38,27 @@ const Navbar = ({ click }) => {
             <span>Return to Shop</span>
           </Link>
         </li>
+        {localStorage.getItem("authToken") ? (
+          <li>
+            <p>
+              Welcome {jwt_decode(localStorage.getItem("authToken")).username}
+            </p>
+            <Link className="logged__in" to="/login">
+              <span onClick={logoutHandler}>Logout</span>
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link className="logged__out" to="/login">
+                <span>Login</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </>
+        )}
       </ul>
 
       <div className="hamburger__menu" onClick={click}>

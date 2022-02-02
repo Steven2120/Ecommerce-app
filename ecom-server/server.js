@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/errorHandler");
-const productRoutes = require("./routes/productRoutes");
+const productRoutes = require("./routes/productRoute");
 const privateRoute = require("./routes/privateRoute");
 
 connectDB();
