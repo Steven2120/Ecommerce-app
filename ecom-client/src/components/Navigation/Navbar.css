@@ -74,7 +74,10 @@
 
 .return__link > span:hover {
     color: #ff13b0;
-    font-size: 1.3rem;
+}
+
+.welcome {
+    color: #f4f4f4;
 }
 
 .logged__out:hover {
@@ -82,6 +85,10 @@
 }
 
 .logged__in:hover {
+    color: #ff13b0;
+}
+
+.register:hover {
     color: #ff13b0;
 }
 

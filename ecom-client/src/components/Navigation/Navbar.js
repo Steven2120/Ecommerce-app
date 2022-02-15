@@ -40,7 +40,7 @@ const Navbar = ({ click }) => {
         </li>
         {localStorage.getItem("authToken") ? (
           <li>
-            <p>
+            <p className="welcome">
               Welcome {jwt_decode(localStorage.getItem("authToken")).username}
             </p>
             <Link className="logged__in" to="/login">
@@ -55,7 +55,9 @@ const Navbar = ({ click }) => {
               </Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link className="register" to="/register">
+                Register
+              </Link>
             </li>
           </>
         )}

@@ -59,7 +59,9 @@ const RegisterScreen = () => {
         <h3 className="register__title">Register</h3>
         {error && <span className="error__message">{error}</span>}
         <div className="form__group">
-          <label htmlFor="name">Username:</label>
+          <label className="register__label" htmlFor="name">
+            Username:
+          </label>
           <input
             type="text"
             required
@@ -71,7 +73,9 @@ const RegisterScreen = () => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="email">Email:</label>
+          <label className="register__label" htmlFor="email">
+            Email:
+          </label>
           <input
             type="email"
             required
@@ -83,7 +87,9 @@ const RegisterScreen = () => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="password">Password:</label>
+          <label className="register__label" htmlFor="password">
+            Password:
+          </label>
           <input
             type="password"
             required
@@ -95,7 +101,9 @@ const RegisterScreen = () => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="confirmpassword">Confirm Password:</label>
+          <label className="register__label" htmlFor="confirmpassword">
+            Confirm Password:
+          </label>
           <input
             type="password"
             required
@@ -105,14 +113,18 @@ const RegisterScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
+        <div className="register__btn__div">
+          <button type="submit" className="register__btn btn-primary">
+            Register
+          </button>
+        </div>
 
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
-
-        <span className="already">
-          Already have an account? <Link to="/login">Login</Link>
-        </span>
+        <p className="already">
+          Already have an account?{" "}
+          <Link className="to__login" to="/login">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

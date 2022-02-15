@@ -43,7 +43,9 @@ const LogInScreen = () => {
         {error && <span className="error__message">{error}</span>}
 
         <div className="form__group">
-          <label htmlFor="email">Email:</label>
+          <label className="login__label" htmlFor="email">
+            Email:
+          </label>
           <input
             type="email"
             required
@@ -56,15 +58,8 @@ const LogInScreen = () => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="password">
+          <label className="login__label" htmlFor="password">
             Password:
-            <Link
-              to="/forgotpassword"
-              className="login__screen__forgot__pass"
-              tabIndex={4}
-            >
-              Forgot Password
-            </Link>
           </label>
           <input
             type="password"
@@ -75,14 +70,30 @@ const LogInScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
             tabIndex={2}
           />
+          <Link
+            to="/forgotpassword"
+            className="login__screen__forgot__pass"
+            tabIndex={4}
+          >
+            Forgot Password
+          </Link>
+
+          <div className="login__btn__div">
+            <button
+              type="submit"
+              className="login__btn btn-primary"
+              tabIndex={3}
+            >
+              Login
+            </button>
+          </div>
         </div>
 
-        <button type="submit" className="btn btn-primary" tabIndex={3}>
-          Login
-        </button>
-
         <span className="not__registered">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account?{" "}
+          <Link className="register__link" to="/register">
+            Register
+          </Link>
         </span>
       </form>
     </div>
