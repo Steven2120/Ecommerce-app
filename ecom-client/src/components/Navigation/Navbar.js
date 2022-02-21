@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { lightTheme, darkTheme, GlobalStyles } from "../Themes/themes";
+import { CgSun } from "react-icons/cg";
+import { HiMoon } from "react-icons/hi";
 import "./Navbar.css";
 
-const Navbar = ({ click }) => {
+const Navbar = ({ click, ...props }) => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -62,7 +65,18 @@ const Navbar = ({ click }) => {
           </>
         )}
       </ul>
-
+      {props.theme === "light" ? (
+        <button className="sun__btn" onClick={() => props.changeTheme("dark")}>
+          <CgSun size={40} />
+        </button>
+      ) : (
+        <button
+          className="moon__btn"
+          onClick={() => props.changeTheme("light")}
+        >
+          <HiMoon size={40} />
+        </button>
+      )}
       <div className="hamburger__menu" onClick={click}>
         <div></div>
         <div></div>

@@ -30,6 +30,16 @@
     outline: none;
 }
 
+.error__message {
+    color: red;
+    margin: .5rem;
+}
+
+.login__form > .error__message {
+    display: flex;
+    justify-content: center;
+}
+
 label {
     text-align: center;
     color: #f4f4f4;
@@ -184,5 +194,11 @@ label {
     
     .register__link {
         font-size: .8em;
+    }
+}
+
+@media (max-height: 560px) {
+    .login__form {
+        margin: auto;
     }
 }

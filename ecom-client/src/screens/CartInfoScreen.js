@@ -33,7 +33,7 @@ const CartScreen = () => {
   return (
     <div className="cart__info__screen">
       <div className="cart__info__left">
-        <h2>Your Cart</h2>
+        <h2 className="cart__title">Your Cart</h2>
         {cartItems.length === 0 ? (
           <div className="empty__message">
             Your cart is empty <Link to="/">Return to Shop</Link>
@@ -54,8 +54,10 @@ const CartScreen = () => {
           <p>Subtotal ({getCartCount()}) items</p>
           <p>${getCartSubTotal().toFixed(2)}</p>
         </div>
-        <div>
-          <button>Proceed To Checkout</button>
+        <div className="proceed__to__checkout__btn__div">
+          <Link to="/checkout">
+            <button>Proceed To Checkout</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -92,6 +92,22 @@
     color: #ff13b0;
 }
 
+.sun__btn {
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    color: #dd219e;
+}
+
+.moon__btn {
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    color: #dd219e;
+}
+
 .hamburger__menu {
     width: 30px;
     height: 30px;
@@ -115,6 +131,14 @@
 @media (max-width: 960px) {
     .navbar__links {
         display: none;
+    }
+
+    .sun__btn {
+        display: block;
+    }
+
+    .moon__btn {
+        display: block;
     }
 
     .hamburger__menu {

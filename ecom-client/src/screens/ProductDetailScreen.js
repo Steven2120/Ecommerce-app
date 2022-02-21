@@ -41,7 +41,7 @@ const ProductScreen = () => {
             <div className="info__left">
               <p className="name__left">{product.name}</p>
               <p>Price: ${product.price}</p>
-              <p>{product.description}</p>
+              <p className="product-description">{product.description}</p>
             </div>
           </div>
 
@@ -67,7 +67,11 @@ const ProductScreen = () => {
                 </select>
               </p>
               <p>
-                <button type="button" onClick={addToCartHandler}>
+                <button
+                  className="add__to__cart__btn"
+                  type="button"
+                  onClick={addToCartHandler}
+                >
                   Add to cart
                 </button>
               </p>

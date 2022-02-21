@@ -62,6 +62,10 @@
     cursor: pointer;
 }
 
+.proceed__to__checkout__btn__div > a > button {
+    height: auto;
+}
+
 .cart__info__right div button:hover {
     background-color: #df58b2;
 }
@@ -84,5 +88,33 @@
 
     .cart__info__right {
         margin: 1.1rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .cart__title {
+        font-size: 1.5rem !important;
+    }
+
+    .empty__message {
+        font-size: 1rem;
+    }
+    
+    .empty__message > a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .cart__title {
+        font-size: 1.2rem !important;
+    }
+
+    .empty__message {
+        font-size: .8rem;
+    }
+    
+    .empty__message > a {
+        font-size: .8rem;
     }
 }
