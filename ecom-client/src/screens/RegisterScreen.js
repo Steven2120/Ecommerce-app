@@ -4,6 +4,8 @@ import axios from "axios";
 import "./RegisterScreen.css";
 
 const RegisterScreen = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +40,7 @@ const RegisterScreen = () => {
     try {
       const { data } = await axios.post(
         "/api/auth/register",
-        { username, email, password },
+        { firstName, lastName, username, email, password },
         config
       );
 
@@ -58,6 +60,35 @@ const RegisterScreen = () => {
       <form className="register__form" onSubmit={registerHandler}>
         <h3 className="register__title">Register</h3>
         {error && <span className="error__message">{error}</span>}
+
+        <div className="form__group">
+          <label htmlFor="firstname" className="register__label">
+            First name:
+          </label>
+          <input
+            type="text"
+            required
+            id="firstname"
+            placeholder="Please enter your first name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
+
+        <div className="form__group">
+          <label htmlFor="lastname" className="register__label">
+            Last name:
+          </label>
+          <input
+            type="text"
+            required
+            id="lastname"
+            placeholder="Please enter a last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
         <div className="form__group">
           <label className="register__label" htmlFor="name">
             Username:
@@ -119,12 +150,14 @@ const RegisterScreen = () => {
           </button>
         </div>
 
-        <p className="already">
-          Already have an account?{" "}
-          <Link className="to__login" to="/login">
-            Login
-          </Link>
-        </p>
+        <div>
+          <p className="already">
+            Already have an account?{" "}
+            <Link className="to__login" to="/login">
+              Login
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );

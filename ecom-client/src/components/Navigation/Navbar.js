@@ -32,7 +32,11 @@ const Navbar = ({ click, ...props }) => {
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-              <span className="cartlogo__badge">{getCartCount()}</span>
+              {localStorage.getItem("authToken") ? (
+                <span className="cartlogo__badge">{getCartCount()}</span>
+              ) : (
+                <span className="cartlogo__badge">0</span>
+              )}
             </span>
           </Link>
         </li>

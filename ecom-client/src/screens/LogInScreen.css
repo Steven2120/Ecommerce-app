@@ -1,11 +1,12 @@
 .login-container {
-    height: 100vh;
+    height: 105vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url("../assets/images/delivery.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin: auto;
 }
 
 .login__form {
@@ -57,6 +58,8 @@ label {
 }
 
 .login__btn {
+    height: 2rem;
+    width: 9rem;
     border-radius: 5px;
     background-color: transparent;
     color: #f4f4f4;
@@ -199,6 +202,11 @@ label {
 
 @media (max-height: 560px) {
     .login__form {
+        margin: auto;
+        height: 98%;
+    }
+
+    .login__form > *{
         margin: auto;
     }
 }

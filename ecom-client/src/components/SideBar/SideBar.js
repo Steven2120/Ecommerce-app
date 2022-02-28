@@ -60,7 +60,13 @@ const SideBar = ({ show, click }) => {
               <i className="fas fa-shopping-cart"></i>
               <span>
                 Cart
-                <span className="sidebar__cartbadge">({getCartCount()})</span>
+                {localStorage.getItem("authToken") ? (
+                  <span className="sidebar__cartbadge">
+                    &#40;{getCartCount()}&#41;
+                  </span>
+                ) : (
+                  <span className="sidebar__cartbadge">&#40;0&#41;</span>
+                )}
               </span>
             </span>
           </Link>

@@ -22,7 +22,7 @@
 
 .form__group {
     height: auto;
-    margin: .8rem;
+    margin: .4rem;
     display: flex;
     flex-direction: column;
 }
@@ -40,9 +40,12 @@
 
 .register__btn__div {
     text-align: center;
+    margin-bottom: .3rem;
 }
 
 .register__btn {
+    height: 2rem;
+    width: 9rem;
     border-radius: 5px;
     background-color: transparent;
     cursor: pointer;
@@ -200,5 +203,19 @@
     
     .register__link {
         font-size: .8em;
+    }
+}
+
+@media (max-height: 620px) {
+    .register-container {
+        height: auto;
+    }
+
+    .register__form {
+        margin: auto;
+    }
+
+    .form__group {
+        margin: none;
     }
 }

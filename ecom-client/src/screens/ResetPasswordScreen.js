@@ -36,7 +36,6 @@ const ResetPasswordScreen = ({ match }) => {
         config
       );
 
-      console.log(data);
       setSuccess(data.data);
     } catch (error) {
       setError(error.response.data.error);
@@ -58,7 +57,9 @@ const ResetPasswordScreen = ({ match }) => {
         )}
 
         <div className="form__group">
-          <label htmlFor="password">New Password</label>
+          <label htmlFor="password" className="reset__label">
+            New Password
+          </label>
           <input
             type="password"
             required
@@ -71,7 +72,9 @@ const ResetPasswordScreen = ({ match }) => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="confirmpassword">Confirm New Password</label>
+          <label htmlFor="confirmpassword" className="reset__label">
+            Confirm New Password
+          </label>
           <input
             type="password"
             required
@@ -82,7 +85,7 @@ const ResetPasswordScreen = ({ match }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="reset__pass__btn btn btn-primary">
           Reset Password
         </button>
       </form>

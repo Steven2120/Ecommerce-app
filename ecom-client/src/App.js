@@ -70,11 +70,7 @@ function App() {
             />
             <Route
               path="/resetpassword/:resetToken"
-              element={
-                <PrivateRoute>
-                  <ResetPasswordScreen />
-                </PrivateRoute>
-              }
+              element={<ResetPasswordScreen />}
             />
             <Route
               path="/product/:id"

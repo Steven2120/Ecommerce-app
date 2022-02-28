@@ -112,36 +112,15 @@ exports.resetpassword = async (req, res, next) => {
     }
 
     user.password = req.body.password;
-    user.resetPassWordToken = undefined;
+    user.resetPasswordrdToken = undefined;
     user.resetPasswordExpiration = undefined;
 
-    user.save();
+    await user.save();
 
     res.status(201).json({
       success: true,
       data: "Password has been reset successfully",
     });
-  } catch (error) {
-    next(error);
-  }
-};
-
-exports.updateUser = async (req, res, next) => {
-  try {
-    let updatedUser = await User.findOneAndUpdate(
-      { email: res.locals.decoded.email },
-      req.body,
-      { new: true }
-    );
-
-    if (req.body.password) {
-      res.status(202).json({
-        message: "Success",
-        payload: updatedUser,
-      });
-    } else {
-      res.json({ message: "Success", payload: updatedUser });
-    }
   } catch (error) {
     next(error);
   }

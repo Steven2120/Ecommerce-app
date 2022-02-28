@@ -45,7 +45,9 @@ const ForgotpasswordScreen = () => {
             will be sent to you with instructions about how to complete the
             process.
           </p>
-          <label htmlFor="email">Email:</label>
+          <label className="forgot__label" htmlFor="email">
+            Email:
+          </label>
           <input
             type="email"
             required
@@ -55,7 +57,7 @@ const ForgotpasswordScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <button className="btn btn-primary">Send Email</button>
+        <button className="forgot__btn btn btn-primary">Send Email</button>
       </form>
     </div>
   );
