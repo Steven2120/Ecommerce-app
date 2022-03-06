@@ -28,7 +28,7 @@ exports.private = async (req, res, next) => {
     req.user = user;
 
     next();
-  } catch (error) {
+  } catch (err) {
     next(new ErrorResponse("Not authorized to access this route", 401));
   }
 };

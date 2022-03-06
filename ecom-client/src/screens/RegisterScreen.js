@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./RegisterScreen.css";
 
 const RegisterScreen = () => {
@@ -150,7 +150,7 @@ const RegisterScreen = () => {
           </button>
         </div>
 
-        <div>
+        <div className="already__div">
           <p className="already">
             Already have an account?{" "}
             <Link className="to__login" to="/login">

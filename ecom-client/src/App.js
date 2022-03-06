@@ -11,8 +11,6 @@ import {
   darkTheme,
   GlobalStyles,
 } from "./components/Themes/themes";
-import { CgSun } from "react-icons/cg";
-import { HiMoon } from "react-icons/hi";
 import "./App.css";
 
 import Navbar from "./components/Navigation/Navbar";

@@ -112,7 +112,7 @@ exports.resetpassword = async (req, res, next) => {
     }
 
     user.password = req.body.password;
-    user.resetPasswordrdToken = undefined;
+    user.resetPasswordToken = undefined;
     user.resetPasswordExpiration = undefined;
 
     await user.save();
@@ -120,6 +120,7 @@ exports.resetpassword = async (req, res, next) => {
     res.status(201).json({
       success: true,
       data: "Password has been reset successfully",
+      token: user.getSignedToken(),
     });
   } catch (error) {
     next(error);

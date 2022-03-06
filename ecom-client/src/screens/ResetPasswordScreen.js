@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ResetPasswordScreen.css";
 
-const ResetPasswordScreen = ({ match }) => {
+const ResetPasswordScreen = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const params = useParams();
+
+  console.log(params.resetToken);
   const resetPasswordHandler = async (e) => {
     e.preventDefault();
 
@@ -29,15 +32,15 @@ const ResetPasswordScreen = ({ match }) => {
 
     try {
       const { data } = await axios.put(
-        `/api/auth/resetpassword/${match.params.resetToken}`,
+        `/api/auth/resetpassword/${params.resetToken}`,
         {
           password,
         },
         config
       );
-
       setSuccess(data.data);
     } catch (error) {
+      console.log(error);
       setError(error.response.data.error);
       setTimeout(() => {
         setError("");
@@ -51,9 +54,9 @@ const ResetPasswordScreen = ({ match }) => {
         <h3 className="rp__title">Reset Password</h3>
         {error && <span className="error__message">{error}</span>}
         {success && (
-          <span className="success__message">
+          <p className="success__message">
             {success} <Link to="/login">Login</Link>
-          </span>
+          </p>
         )}
 
         <div className="form__group">

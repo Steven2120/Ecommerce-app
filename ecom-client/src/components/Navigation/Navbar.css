@@ -99,6 +99,7 @@
     background-color: transparent;
     border: none;
     color: #dd219e;
+    cursor: pointer;
 }
 
 .moon__btn {
@@ -107,6 +108,7 @@
     background-color: transparent;
     border: none;
     color: #dd219e;
+    cursor: pointer;
 }
 
 .hamburger__menu {

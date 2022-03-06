@@ -123,6 +123,7 @@
     .add__to__cart__btn {
         height: auto;
         font-size: .8rem;
+        margin: auto;
     }
 }
 

@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { lightTheme, darkTheme, GlobalStyles } from "../Themes/themes";
 import { CgSun } from "react-icons/cg";
 import { HiMoon } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ click, ...props }) => {

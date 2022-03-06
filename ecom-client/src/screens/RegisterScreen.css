@@ -58,6 +58,10 @@
     transition: background-color .8s ease-out;
 }
 
+.already__div {
+    text-align: center;
+}
+
 .already {
     padding-bottom: 1rem;
     margin: 0px 5px 0px 5px;
